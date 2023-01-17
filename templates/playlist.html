@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="jumbotron">
+  <h1>{{ playlist.name }}!</h1>
+  {% if playlist.description %}
+  <p class="lead">{{ playlist.description }}</p>
+  {% endif %}
+</div>
+
+
+<div class="text-danger">
+  
+  SHOW ALL OF THE SONGS IN THIS PLAYLIST HERE
+  {% for songs in playlist.playlistsongs %}
+  <li>
+    {{songs.title}} ------{{songs.artist}}
+  </li>
+</div>
+{% endfor %}
+
+<p>
+  <ul>
+ 
+  <!-- {% for song in songs %} -->
+  {% if songs.song != playlist.playlistsongs %}
+  <li>
+  <a class="btn btn-primary" href="/playlists/{{ playlist.id }}/add-song">
+    {{song.title}}--
+    {{song.artist}}
+    Add Song To Playlist
+  </a>
+</li>
+</ul>
+{% endif %}
+  <!-- {% endfor %} -->
+</p>
+
+{% endblock %}
